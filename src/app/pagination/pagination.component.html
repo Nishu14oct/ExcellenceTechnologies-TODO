@@ -1,0 +1,59 @@
+<div class="container-fluid pad-5">
+  <mat-card>
+    <div class="row">
+      <div class="col-12">
+        <table class="table table-borderd">
+          <thead class="text-center">
+            <tr class="custom-tr">
+              <th class="custom-th" rowspan="2">Sr No.</th>
+              <th class="custom-th" rowspan="2">First Name</th>
+              <th class="custom-th" rowspan="2">Last Name</th>
+              <th class="custom-th" rowspan="2">Email</th>
+              <th class="custom-th" rowspan="2">Avatar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="text-center" *ngIf="dataArray.length === 0">
+              <td colspan="9">
+                <img
+                  src="https://image.freepik.com/free-vector/no-data-concept-illustration_114360-536.jpg"
+                  width="300px"
+                />
+              </td>
+            </tr>
+            <tr
+              class="text-center"
+              *ngFor="let item of dataArray; let i = index"
+            >
+              <td class="custom-td">
+                {{ i + 1 }}
+              </td>
+              <td class="custom-td">
+                {{ item.first_name }}
+              </td>
+              <td class="custom-td">
+                {{ item.last_name }}
+              </td>
+              <td class="custom-td">
+                {{ item.email }}
+              </td>
+              <td class="custom-td">
+                {{ item.avatar }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <ng-container
+      *ngFor="
+        let item of collection | paginate: { itemsPerPage: 5, currentPage: start }
+      "
+    >
+    </ng-container>
+    <pagination-controls
+      (pageChange)="start = $event"
+      (click)="change($event, start)"
+    ></pagination-controls>
+  </mat-card>
+</div>

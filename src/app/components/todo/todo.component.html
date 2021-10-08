@@ -1,0 +1,139 @@
+<div class="container-fluid pad-5">
+  <div class="row">
+    <div class="col-12">
+      <mat-card class="card-height-850-lp card-height-960">
+        <div class="row pad-5">
+          <div class="col-12 text-center">
+            <span class="f-100">TODO APP</span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-3 col-ver-line-divider">
+            <form [formGroup]="syllabusForm" novalidate>
+              <div class="row">
+                <div class="col-12 remove-col-padding">
+                  <mat-form-field class="form-field" appearance="outline">
+                    <mat-label>First Name</mat-label>
+                    <input
+                      matInput
+                      type="text"
+                      formControlName="firstName"
+                      required
+                    />
+                  </mat-form-field>
+                </div>
+
+                <div class="col-12 remove-col-padding">
+                  <mat-form-field class="form-field" appearance="outline">
+                    <mat-label>Last Name</mat-label>
+                    <input
+                      matInput
+                      type="text"
+                      formControlName="lastName"
+                      required
+                    />
+                  </mat-form-field>
+                </div>
+
+                <div class="col-12 remove-col-padding">
+                  <mat-form-field class="form-field" appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input
+                      matInput
+                      type="text"
+                      formControlName="email"
+                      required
+                    />
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="text-center">
+                  <button
+                    mat-raised-button
+                    class="btn btn-primary w-100"
+                    (click)="submit()"
+                  >
+                    {{ updateIndex === -1 ? "Add" : "Update" }}
+                  </button>
+                </div>
+              </div>
+            </form>
+
+            <button type="button" class="btn btn-link mt-20" (click)="pagination()">Pagination</button>
+          </div>
+
+          <div class="col-9">
+            <div class="row">
+              <div class="col-12 remove-col-padding">
+                <table class="table table-borderd table-stripped custom-table">
+                  <thead class="table-skill__head text-center">
+                    <tr class="custom-tr">
+                      <th class="custom-th" rowspan="2">Sr No.</th>
+                      <th class="custom-th" rowspan="2">First Name</th>
+                      <th class="custom-th" rowspan="2">Last Name</th>
+                      <th class="custom-th" rowspan="2">Email</th>
+                      <th class="custom-th" rowspan="2">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody class="no-border">
+                    <tr class="text-center" *ngIf="finalArray.length === 0">
+                      <td colspan="9">
+                        <img
+                          src="https://image.freepik.com/free-vector/no-data-concept-illustration_114360-536.jpg"
+                          width="300px"
+                        />
+                      </td>
+                    </tr>
+                    <tr
+                      class="text-center"
+                      *ngFor="let item of finalArray; let i = index"
+                    >
+                      <td class="custom-td">
+                        {{ i + 1 }}
+                      </td>
+                      <td class="custom-td">
+                        {{ item.firstName }}
+                      </td>
+                      <td class="custom-td">
+                        {{ item.lastName }}
+                      </td>
+                      <td class="custom-td">
+                        {{ item.email }}
+                      </td>
+                      <td class="custom-td">
+                        <button
+                          mat-raised-button
+                          class="btn btn-secondary mar-10"
+                          (click)="edit(i)"
+                        >
+                          Edit
+                        </button>
+                        <button
+                          mat-raised-button
+                          class="btn btn-danger"
+                          (click)="delete(i)"
+                        >
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="col-12" *ngIf="finalArray.length > 0">
+              <button
+                mat-raised-button
+                class="btn-add"
+                (click)="localStorage()"
+              >
+                Add To LocalStorage
+              </button>
+            </div>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>

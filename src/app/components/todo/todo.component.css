@@ -1,0 +1,23 @@
+.pad-5{
+  padding: 3%;
+}
+
+.f-100{
+  font-size: 100px;
+  color: #8888;
+}
+.mat-form-field{
+  width: 100%;
+}
+.w-100{
+  width : 100%;
+}
+.mar-10{
+  margin-right: 10px;
+}
+td{
+  text-transform: capitalize;
+}
+.mt-20{
+  margin-top: 20px;
+}
